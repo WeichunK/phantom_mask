@@ -4,10 +4,17 @@ const getTransactions = async (req, res) => {
     const category = req.params.category;
     switch (category) {
         case 'users': {
-            const start = req.query.start;
-            const end = req.query.end;
-            const limit = req.query.limit;
+            start = req.query.start;
+            end = req.query.end;
+            limit = req.query.limit;
             transactionList = await transactions.getTransactions({ start: start, end: end, limit: limit, category: 'users' });
+            break;
+        }
+        case 'daterange': {
+            start = req.query.start;
+            end = req.query.end;
+            transactionList = await transactions.getTransactions({ start: start, end: end, category: 'daterange' });
+            break;
         }
     }
     if (!transactionList) {
@@ -20,7 +27,6 @@ const getTransactions = async (req, res) => {
     }
     res.status(200).send({ data: transactionList });
 }
-
 
 module.exports = {
     getTransactions,
