@@ -7,6 +7,7 @@ app.use('/api/' + API_VERSION,
     [
         require('./server/routes/pharmacies_route'),
         require('./server/routes/masks_route'),
+        require('./server/routes/transactions_route'),
     ]
 );
 
