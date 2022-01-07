@@ -11,8 +11,18 @@ const getPharmacies = async (req, res) => {
             case 'openinghours': {
                 const day = req.query.day;
                 const time = req.query.time;
-                console.log({ day: day, time: time })
                 return pharmacies.getPharmacies({ day: day, time: time });
+            }
+
+            case 'query': {
+                let requirement = { priceRange: true }
+                if (req.query.lowest) { requirement.lowestPrice = req.query.lowest; }
+                if (req.query.highest) { requirement.highestPrice = req.query.highest; }
+                if (req.query.over) { requirement.leastProducts = req.query.over; }
+                if (req.query.under) { requirement.mostProducts = req.query.under; }
+
+
+                return pharmacies.getPharmacies(requirement);
             }
 
             // case 'search': {

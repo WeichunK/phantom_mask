@@ -2,8 +2,7 @@ const masks = require('../models/masks_model');
 
 const getMasks = async (req, res) => {
     let maskList
-    let sort
-    req.query.sort == 'price' ? sort = 'price' : sort = 'mask_name';
+    let sort = (req.query.sort == 'price') ? 'price' : 'mask_name';
     if (req.query.pharmacy) {
         const pharmacy = req.query.pharmacy;
         maskList = await masks.getMasks({ pharmacy: pharmacy, sort: sort });
