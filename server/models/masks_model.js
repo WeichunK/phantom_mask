@@ -15,6 +15,14 @@ const getMasks = async (requirement = {}) => {
     return masks[0];
 };
 
+const search = async (requirement = {}) => {
+    let query = 'SELECT * FROM mask WHERE MATCH(mask_name, pharmacy_name) AGAINST(?);'
+    let binding = requirement.keywords
+    searchResults = await pool.query(query, binding);
+    return searchResults[0];
+}
+
 module.exports = {
     getMasks,
+    search,
 };
