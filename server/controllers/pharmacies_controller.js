@@ -11,7 +11,7 @@ const getPharmacies = async (req, res) => {
             case 'openinghours': {
                 const day = req.query.day;
                 const time = req.query.time;
-                return pharmacies.getPharmacies({ day: day, time: time });
+                return pharmacies.getPharmacies({ day: day, time: time, openingHours: true });
             }
 
             case 'query': {

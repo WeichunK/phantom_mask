@@ -2,7 +2,7 @@ const { pool } = require('./mysqlcon');
 
 const getPharmacies = async (requirement = {}) => {
     const query = { sql: '', condition: '', groupby: '', having: '', binding: [] };
-    if (requirement.day != null || requirement.time != null) {
+    if (requirement.openingHours) {
         query.sql = 'SELECT pharmacy_name, day, open, close FROM opening_hour '
         if (requirement.day != null && requirement.time != null) {
             query.condition = 'WHERE day = ? AND open <= ? and close >= ?;'
@@ -12,7 +12,7 @@ const getPharmacies = async (requirement = {}) => {
         } else if (requirement.day != null) {
             query.condition = 'WHERE day = ?;'
             query.binding.push(requirement.day);
-        } else {
+        } else if (requirement.time != null) {
             query.condition = 'WHERE open <= ? and close >= ?;'
             query.binding.push(requirement.time);
             query.binding.push(requirement.time);
