@@ -17,7 +17,7 @@ const getPharmacies = async (requirement = {}) => {
             query.binding.push(requirement.time);
             query.binding.push(requirement.time);
         }
-    } if (requirement.priceRange) {
+    } else if (requirement.priceRange) {
         query.sql = 'SELECT pharmacy_name, count(mask_name) AS product_count FROM mask '
         query.groupby = 'group by pharmacy_name '
         if (requirement.lowestPrice && requirement.highestPrice && requirement.leastProducts && requirement.mostProducts) {
