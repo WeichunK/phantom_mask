@@ -28,7 +28,34 @@ const getTransactions = async (req, res) => {
     res.status(200).send({ data: transactionList });
 }
 
+const postTransaction = async (req, res) => {
+    try {
+        const transaction = {
+            userName: req.body.userName,
+            pharmacyName: req.body.pharmacyName,
+            maskName: req.body.maskName,
+            transactionDate: new Date(),
+        }
+        const postTransactionResult = await transactions.postTransaction(transaction)
+        if (postTransactionResult.error) {
+            res.status(403).send({ error: postTransactionResult.error });
+            return;
+        }
+        res.status(200).send({
+            data: {
+                transaction: postTransactionResult
+            }
+        })
+        return;
+    } catch (err) {
+        console.log('err', err.message)
+        res.status(403).send({ error: err.message });
+        return;
+    }
+}
+
 module.exports = {
     getTransactions,
+    postTransaction,
 
 };
