@@ -1,3 +1,11 @@
 .env
 node_modules/
 package-lock.json
+api_doc.md
+testData.js
+
+data/backup_maskData.json
+data/backup_openingHourData.json
+data/backup_pharmacyData.json
+data/backup_transactionData.json
+data/backup_userData.json
