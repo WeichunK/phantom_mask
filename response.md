@@ -31,12 +31,10 @@
 
 ## Bonus
 ### Test Coverage Report
-  check report [here](#test-coverage-report)
-
-  `npm run test`
+ 
 
 ### Dockerized
-  check my dockerfile [here](#dockerized)
+  check my dockerfile [here](./Dockerfile)
 
 ### Demo Site Url
-  demo site is ready on [heroku](#demo-site-url)
+  demo site is ready on http://54.199.156.86/
