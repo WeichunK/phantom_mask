@@ -5,7 +5,6 @@ describe('openinghours', async () => {
     it('select pharmacies given week day and time', async () => {
         const res = await requester
             .get('/api/1.0/pharmacies/openinghours?day=mon&time=12:58');
-
         const data = res.body.data;
         expect(data.length).to.equal(2);
 
@@ -23,7 +22,6 @@ describe('openinghours', async () => {
                 close: "13:00:00"
             },
         ]
-
 
         expect(data).to.deep.equalInAnyOrder(openingHoursExpected);
     });
@@ -55,7 +53,6 @@ describe('openinghours', async () => {
                 close: "22:00:00"
             },
         ]
-
 
         expect(data).to.deep.equalInAnyOrder(openingHoursExpected);
     });

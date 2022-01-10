@@ -4,7 +4,7 @@ const pharmacydata = [
         cashBalance: 466.36
     },
     {
-        name: "test_pharmacy_2",
+        pharmacyName: "test_pharmacy_2",
         cashBalance: 1466.36
     },
 ];
@@ -26,6 +26,18 @@ const maskData = [
         maskName: "test_mask_2 (green) (3 per pack)",
         pharmacyName: "test_pharmacy_2",
         piece: 3,
+        price: 3.65
+    },
+    {
+        maskName: "test_mask_2 (red) (10 per pack)",
+        pharmacyName: "test_pharmacy_2",
+        piece: 10,
+        price: 25.65
+    },
+    {
+        maskName: "test_mask_3 (green) (6 per pack)",
+        pharmacyName: "test_pharmacy_2",
+        piece: 4.8,
         price: 3.65
     },
 ];

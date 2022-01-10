@@ -100,4 +100,20 @@ describe('transaction test', async () => {
         }
         expect(data.error).to.equal(postTransactionExpected.error);
     });
+
+    it('transactions within daterange', async () => {
+        const res = await requester
+            .get('/api/1.0/transactions/daterange?start=2021-01-03&end=2021-01-04')
+        const data = res.body.data;
+        expect(data.length).to.equal(1);
+        const statisticExpected = {
+            quantity: "13",
+            amount: "37.30"
+        }
+        expect(data[0]).to.deep.equalInAnyOrder(statisticExpected);
+    });
+
+
+
+
 });
