@@ -37,6 +37,10 @@ const postTransaction = async (req, res) => {
             transactionDate: new Date(),
         }
         const postTransactionResult = await transactions.postTransaction(transaction)
+        if (postTransactionResult.error === 'invalid user name!' || postTransactionResult.error === 'invalid mask name or pharmacy name!') {
+            res.status(400).send({ error: postTransactionResult.error });
+            return;
+        }
         if (postTransactionResult.error) {
             res.status(403).send({ error: postTransactionResult.error });
             return;

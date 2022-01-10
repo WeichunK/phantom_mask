@@ -1,7 +1,6 @@
 .env
 node_modules/
 package-lock.json
-api_doc.md
 testData.js
 
 data/backup_maskData.json

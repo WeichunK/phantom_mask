@@ -4,11 +4,11 @@ const getTransactions = async (requirement = {}) => {
     const query = { sql: '', condition: '', groupby: '', having: '', orderby: '', limit: '', binding: [] };
 
     if (requirement.category === 'users') {
-        query.sql = 'SELECT user_name, sum(transaction_amount) AS AMOUNT FROM transaction '
+        query.sql = 'SELECT user_name, sum(transaction_amount) AS amount FROM transaction '
         query.groupby = 'GROUP BY user_name '
         query.orderby = 'ORDER BY AMOUNT DESC '
     } else if (requirement.category === 'daterange') {
-        query.sql = 'SELECT count(id) AS QUANTITY, sum(transaction_amount) AS AMOUNT FROM transaction '
+        query.sql = 'SELECT count(id) AS quantity, sum(transaction_amount) AS amount FROM transaction '
     }
 
     if (requirement.start && requirement.end) {

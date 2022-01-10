@@ -4,7 +4,8 @@
   "description": "You are building a backend service and a database for a pharmacy platform, with the following 2 raw datasets:",
   "main": "insert_data.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha --exit"
+    "test": "NODE_ENV=test mocha --exit",
+    "test_windows": "set NODE_ENV=test&&mocha --exit"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
-    "chai": "^4.3.4"
+    "chai": "^4.3.4",
+    "mocha": "^9.1.3"
   }
 }
