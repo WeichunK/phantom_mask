@@ -2,9 +2,9 @@ const router = require('express').Router();
 const {
     search,
 
-} = require('../controllers/masks_controller');
+} = require('../controllers/search_controller');
 
-router.route('/search')
+router.route('/search/:category')
     .get(search);
 
 module.exports = router;

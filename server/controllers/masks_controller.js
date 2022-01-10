@@ -16,22 +16,7 @@ const getMasks = async (req, res) => {
     res.status(200).send({ data: maskList });
 };
 
-const search = async (req, res) => {
-    searchResults = await masks.search({ keywords: req.query.keywords || '' });
-
-    if (!searchResults) {
-        res.status(400).send({ error: 'Wrong Request' });
-        return;
-    }
-    if (searchResults.length == 0) {
-        res.status(200).json({ data: [] });
-        return;
-    }
-    res.status(200).send({ data: searchResults });
-};
-
 module.exports = {
     getMasks,
-    search,
 
 };

@@ -63,6 +63,14 @@ const getPharmacies = async (requirement = {}) => {
     return pharmacies[0];
 };
 
+const search = async (requirement = {}) => {
+    let query = 'SELECT * FROM pharmacy WHERE MATCH(pharmacy_name) AGAINST(?);'
+    let binding = requirement.keywords
+    searchResults = await pool.query(query, binding);
+    return searchResults[0];
+}
+
 module.exports = {
     getPharmacies,
+    search,
 };

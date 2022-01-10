@@ -21,19 +21,8 @@ const getPharmacies = async (req, res) => {
                 if (req.query.over) { requirement.leastProducts = req.query.over; }
                 if (req.query.under) { requirement.mostProducts = req.query.under; }
 
-
                 return pharmacies.getPharmacies(requirement);
             }
-
-            // case 'search': {
-            //     
-            //     const keyword = req.query.keyword;
-            //     if (keyword) {
-            //         return result;
-            //     } else {
-            //         return;
-            //     }
-            // }
 
             default: {
                 return pharmacies.getPharmacies();

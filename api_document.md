@@ -3,7 +3,7 @@ API Doc
 
 ### Host Name
 
-diekleidungen.com
+
 
 ### API Version
 
@@ -52,7 +52,7 @@ diekleidungen.com
 | amount | String | The amount of transactions within given date range|
 
 
-* `Search Result Object`
+* `Search Mask Result Object`
 
 | Field | Type | Description |
 | :---: | :---: | :--- |
@@ -61,6 +61,14 @@ diekleidungen.com
 | pharmacy_name | String | Pharmacy's name|
 | piece | Integer | Pieces per pack |
 | price | String | Price of mask|
+
+
+* `Search Pharmacy Result Object`
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| pharmacy_name | String | Pharmacy's name|
+| cash_balance | String | Cash_balance of pharmacy |
 
 
 * `Transaction Object`
@@ -354,10 +362,10 @@ diekleidungen.com
 
 ---
 
-### Search API
+### Search Mask API
 
 
-* **End Point:** `/search`
+* **End Point:** `/search/mask`
 
 * **Method:** `GET`
 
@@ -369,14 +377,14 @@ diekleidungen.com
 
 * **Request Example:**
 
-  `http://[HOST_NAME]/api/[API_VERSION]/search?keywords=Free to Roam black`
+  `http://[HOST_NAME]/api/[API_VERSION]/search/mask?keywords=Free to Roam black`
 `
 
 * **Success Response: 200**
 
 | Field | Type | Description |
 | :---: | :---: | :--- |
-| data | Array | Array of `Search Result Object`. |
+| data | Array | Array of `Search Mask Result Object`. |
 
 * **Success Response Example:**
 
@@ -399,6 +407,61 @@ diekleidungen.com
 }
 ```
 
+* **Server Error Response: 500**
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| error | String | Error message. |
+
+* **Wrong Request Error Response: 400**
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| error | String | Error message. |
+
+---
+
+
+### Search Pharmacy API
+
+
+* **End Point:** `/search/pharmacy`
+
+* **Method:** `GET`
+
+* **Query Parameters**
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| keywords | String | separated by space |
+
+* **Request Example:**
+
+  `http://[HOST_NAME]/api/[API_VERSION]/search/pharmacy?keywords=drugs`
+`
+
+* **Success Response: 200**
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| data | Array | Array of `Search Pharmacy Result Object`. |
+
+* **Success Response Example:**
+
+```
+{
+  "data":[
+    {
+      "pharmacy_name":"Atlas Drugs",
+      "cash_balance":"785.02"
+      },
+    {
+      "pharmacy_name":"Discount Drugs",
+      "cash_balance":"753.18"
+      }
+      ]
+}
+```
 
 * **Server Error Response: 500**
 
@@ -406,9 +469,14 @@ diekleidungen.com
 | :---: | :---: | :--- |
 | error | String | Error message. |
 
+* **Wrong Request Error Response: 400**
 
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| error | String | Error message. |
 
 ---
+
 
 ### Purchase Mask API
 
