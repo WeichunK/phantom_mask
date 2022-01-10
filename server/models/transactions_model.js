@@ -8,7 +8,7 @@ const getTransactions = async (requirement = {}) => {
         query.groupby = 'GROUP BY user_name '
         query.orderby = 'ORDER BY AMOUNT DESC '
     } else if (requirement.category === 'daterange') {
-        query.sql = 'SELECT count(id) AS quantity, sum(transaction_amount) AS amount FROM transaction '
+        query.sql = 'SELECT sum(piece) AS quantity, sum(transaction_amount) AS amount FROM transaction '
     }
 
     if (requirement.start && requirement.end) {
@@ -68,8 +68,8 @@ const postTransaction = async (transaction) => {
         queryStr = 'UPDATE pharmacy SET cash_balance = ? WHERE pharmacy_name = ?';
         [updatePharmacyResult] = await conn.query(queryStr, [parseFloat(pharmacy[0].cash_balance) + parseFloat(mask[0].price), transaction.pharmacyName]);
 
-        queryStr = 'INSERT INTO transaction (user_name, pharmacy_name, mask_name, transaction_amount, transaction_date) VALUES (?)';
-        [InsertTransactionResult] = await conn.query(queryStr, [[transaction.userName, transaction.pharmacyName, transaction.maskName, mask[0].price, transaction.transactionDate]]);
+        queryStr = 'INSERT INTO transaction (user_name, pharmacy_name, mask_name, piece, transaction_amount, transaction_date) VALUES (?)';
+        [InsertTransactionResult] = await conn.query(queryStr, [[transaction.userName, transaction.pharmacyName, transaction.maskName, mask[0].piece, mask[0].price, transaction.transactionDate]]);
 
         queryStr = 'SELECT * FROM transaction WHERE id = ?';
         [InsertedTransaction] = await conn.query(queryStr, [InsertTransactionResult.insertId]);

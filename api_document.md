@@ -26,6 +26,7 @@ diekleidungen.com
 | :---: | :---: | :--- |
 | mask_name | String |  Mask's name |
 | pharmacy_name | String | Pharmacy's name|
+| piece | Integer | Pieces per pack |
 | price | String | Price of mask |
 
 * `Pharmacy product count Object`
@@ -33,7 +34,7 @@ diekleidungen.com
 | Field | Type | Description |
 | :---: | :---: | :--- |
 | pharmacy_name | String | Pharmacy's name |
-| product_count | String | The number of product that fulfill query parameters|
+| product_count | Integer | The number of product that fulfill query parameters|
 
 * `User Transaction Amount Object`
 
@@ -47,7 +48,7 @@ diekleidungen.com
 
 | Field | Type | Description |
 | :---: | :---: | :--- |
-| quantity | String | The number of transactions within given date range |
+| quantity | String | Total pieces of masks of transactions within given date range |
 | amount | String | The amount of transactions within given date range|
 
 
@@ -55,20 +56,22 @@ diekleidungen.com
 
 | Field | Type | Description |
 | :---: | :---: | :--- |
-| id | String | Id of mask |
+| id | Integer | Id of mask |
 | mask_name | String |  Mask's name |
 | pharmacy_name | String | Pharmacy's name|
-| price | String | price of mask|
+| piece | Integer | Pieces per pack |
+| price | String | Price of mask|
 
 
 * `Transaction Object`
 
 | Field | Type | Description |
 | :---: | :---: | :--- |
-| id | String | Id of Transaction |
+| id | Integer | Id of Transaction |
 | user_name | String |  User's name |
 | pharmacy_name | String | Pharmacy's name|
 | mask_name | String |  Mask's name |
+| piece | Integer | Pieces per pack |
 | transaction_amount | String | Amount of transaction|
 | transaction_date | String | Date of transaction|
 
@@ -85,7 +88,7 @@ diekleidungen.com
 
 | Field | Type | Description |
 | :---: | :---: | :--- |
-| day | String | Mon/Tue/Wed/Thu/Fri/Sat/Sun |
+| day | String | mon/tue/wed/thu/fri/sat/sun |
 | time | String | format: HH:MM |
 
 
@@ -162,11 +165,13 @@ diekleidungen.com
     {
       "mask_name":"Free to Roam (black) (3 per pack)",
       "pharmacy_name":"Heartland Pharmacy",
+      "piece":3,
       "price":"5.31"
     },
     {
       "mask_name":"Second Smile (green) (6 per pack)",
       "pharmacy_name":"Heartland Pharmacy",
+      "piece":6,
       "price":"11.89"
       }
       ]
@@ -330,7 +335,7 @@ diekleidungen.com
 {
     "data":[
         {
-            "quantity":25,
+            "quantity":"175",
             "amount":"560.64"
         }
         ]
@@ -381,11 +386,13 @@ diekleidungen.com
         {
             "id":3,"mask_name":"Free to Roam (black) (3 per pack)",
             "pharmacy_name":"Cash Saver Pharmacy",
+            "piece":3,
             "price":"13.83"
         },
         {
             "id":13,"mask_name":"Free to Roam (black) (10 per pack)",
             "pharmacy_name":"MedSavvy",
+            "piece":10,
             "price":"26.54"
         }
     ]
@@ -445,6 +452,7 @@ diekleidungen.com
             "user_name": "Eula Wheeler",
             "pharmacy_name": "MedSavvy",
             "mask_name": "Masquerade (black) (10 per pack)",
+            "piece":10,
             "transaction_amount": "19.54",
             "transaction_date": "2022-01-10T05:37:48.000Z"
         }

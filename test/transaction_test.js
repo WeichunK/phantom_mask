@@ -13,12 +13,13 @@ describe('transaction test', async () => {
             .send(transaction);
 
         const data = res.body.data.transaction;
-        expect(Object.keys(data).length).to.equal(6);
+        expect(Object.keys(data).length).to.equal(7);
         const postTransactionExpected = {
             id: 4,
             user_name: "test_User_1",
             pharmacy_name: "test_pharmacy_1",
             mask_name: "test_mask_1 (blue) (10 per pack)",
+            piece: 10,
             transaction_amount: 33.65,
 
         }
@@ -26,6 +27,7 @@ describe('transaction test', async () => {
         expect(data.user_name).to.equal(postTransactionExpected.user_name);
         expect(data.pharmacy_name).to.equal(postTransactionExpected.pharmacy_name);
         expect(data.mask_name).to.equal(postTransactionExpected.mask_name);
+        expect(data.piece).to.equal(postTransactionExpected.piece);
         expect(Date.parse(data.transaction_date)).to.be.closeTo(Date.now(), 1000);
     });
 

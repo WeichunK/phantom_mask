@@ -67,6 +67,7 @@ for (let i in pharmacies) {
         let mask = {
             maskName: pharmacies[i].masks[m].name,
             pharmacyName: pharmacies[i].name,
+            piece: parseInt(pharmacies[i].masks[m].name.match(/(\([0-9]+)/g)[0].replace('(', '')),
             price: pharmacies[i].masks[m].price
         }
         maskData.push(mask)
@@ -80,6 +81,7 @@ for (let i in users) {
             userName: users[i].name,
             pharmacyName: users[i].purchaseHistories[j].pharmacyName,
             maskName: users[i].purchaseHistories[j].maskName,
+            piece: parseInt(users[i].purchaseHistories[j].maskName.match(/(\([0-9]+)/g)[0].replace('(', '')),
             transactionAmount: users[i].purchaseHistories[j].transactionAmount,
             transactionDate: users[i].purchaseHistories[j].transactionDate
         }

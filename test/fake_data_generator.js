@@ -14,7 +14,7 @@ async function _createFakePharmacy(conn) {
 }
 
 async function _createFakeMask(conn) {
-    return await conn.query('INSERT INTO mask (mask_name, pharmacy_name, price) VALUES ?', [maskData.map(x => Object.values(x))]);
+    return await conn.query('INSERT INTO mask (mask_name, pharmacy_name, piece, price) VALUES ?', [maskData.map(x => Object.values(x))]);
 }
 
 async function _createFakeOpeningHour(conn) {
@@ -26,7 +26,7 @@ async function _createFakeUser(conn) {
 }
 
 async function _createFakeTransaction(conn) {
-    return await conn.query('INSERT INTO transaction (user_name, pharmacy_name, mask_name, transaction_amount, transaction_date) VALUES ?', [transactionData.map(x => Object.values(x))]);
+    return await conn.query('INSERT INTO transaction (user_name, pharmacy_name, mask_name, piece, transaction_amount, transaction_date) VALUES ?', [transactionData.map(x => Object.values(x))]);
 }
 
 

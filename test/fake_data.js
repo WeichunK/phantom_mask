@@ -13,16 +13,19 @@ const maskData = [
     {
         maskName: "test_mask_1 (blue) (10 per pack)",
         pharmacyName: "test_pharmacy_1",
+        piece: 10,
         price: 33.65
     },
     {
         maskName: "test_mask_2 (green) (3 per pack)",
         pharmacyName: "test_pharmacy_1",
+        piece: 3,
         price: 2.65
     },
     {
         maskName: "test_mask_2 (green) (3 per pack)",
         pharmacyName: "test_pharmacy_2",
+        piece: 3,
         price: 3.65
     },
 ];
@@ -70,6 +73,7 @@ const transactionData = [
         userName: "test_User_1",
         pharmacyName: "test_pharmacy_1",
         maskName: "test_mask_1 (blue) (10 per pack)",
+        piece: 10,
         transactionAmount: 33.65,
         transactionDate: "2021-01-02 20:41:02"
     },
@@ -77,6 +81,7 @@ const transactionData = [
         userName: "test_User_2",
         pharmacyName: "test_pharmacy_1",
         maskName: "test_mask_1 (blue) (10 per pack)",
+        piece: 10,
         transactionAmount: 33.65,
         transactionDate: "2021-01-03 12:41:02"
     },
@@ -84,6 +89,7 @@ const transactionData = [
         userName: "test_User_1",
         pharmacyName: "test_pharmacy_2",
         maskName: "test_mask_2 (green) (3 per pack)",
+        piece: 3,
         transactionAmount: 3.65,
         transactionDate: "2021-01-03 16:41:02"
     },

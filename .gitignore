@@ -8,3 +8,5 @@ data/backup_openingHourData.json
 data/backup_pharmacyData.json
 data/backup_transactionData.json
 data/backup_userData.json
+
+.DS_Store

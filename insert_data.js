@@ -8,10 +8,10 @@ const userdata = JSON.parse(fs.readFileSync("./data/userdata.json"));
 
 async function main() {
     await pool.query('INSERT INTO pharmacy (pharmacy_name, cash_balance) VALUES ?', [pharmacydata.map(x => Object.values(x))]);
-    await pool.query('INSERT INTO mask (mask_name, pharmacy_name, price) VALUES ?', [maskData.map(x => Object.values(x))]);
+    await pool.query('INSERT INTO mask (mask_name, pharmacy_name, piece, price) VALUES ?', [maskData.map(x => Object.values(x))]);
     await pool.query('INSERT INTO opening_hour (pharmacy_name, day, open, close) VALUES ?', [openingHourData.map(x => Object.values(x))]);
     await pool.query('INSERT INTO user (user_name, cash_balance) VALUES ?', [userdata.map(x => Object.values(x))]);
-    await pool.query('INSERT INTO transaction (user_name, pharmacy_name, mask_name, transaction_amount, transaction_date) VALUES ?', [transactionData.map(x => Object.values(x))]);
+    await pool.query('INSERT INTO transaction (user_name, pharmacy_name, mask_name, piece, transaction_amount, transaction_date) VALUES ?', [transactionData.map(x => Object.values(x))]);
     await pool.end();
 }
 

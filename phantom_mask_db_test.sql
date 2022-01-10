@@ -26,6 +26,7 @@ CREATE TABLE `mask` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `mask_name` varchar(50) NOT NULL,
   `pharmacy_name` varchar(50) NOT NULL,
+  `piece` int unsigned DEFAULT NULL,
   `price` decimal(5,2) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `mask_ibfk_1` (`pharmacy_name`),
@@ -110,6 +111,7 @@ CREATE TABLE `transaction` (
   `user_name` varchar(50) NOT NULL,
   `pharmacy_name` varchar(50) NOT NULL,
   `mask_name` varchar(50) NOT NULL,
+  `piece` int unsigned DEFAULT NULL,
   `transaction_amount` decimal(6,2) NOT NULL,
   `transaction_date` timestamp NOT NULL,
   PRIMARY KEY (`id`),
@@ -162,4 +164,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-10 15:17:52
+-- Dump completed on 2022-01-10 16:32:36
