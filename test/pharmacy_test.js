@@ -15,4 +15,12 @@ describe('pharmacy test', async () => {
         expect(data[0]).to.deep.equalInAnyOrder(pharmacyExpected);
     });
 
+
+    it('pharmacies within price range, wrong query parameter', async () => {
+        const res = await requester
+            .get('/api/1.0/pharmacies/query?lowest=1&highest=5&over=1&under=aaa')
+
+        expect(res.body.error).to.equal('invalid query parameter');
+    });
+
 });

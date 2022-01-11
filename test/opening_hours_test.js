@@ -88,5 +88,18 @@ describe('openinghours', async () => {
         expect(data).to.deep.equalInAnyOrder(openingHoursExpected);
     });
 
+    it('select pharmacies given wrong weekday format', async () => {
+        const res = await requester
+            .get('/api/1.0/pharmacies/openinghours?day=7');
+
+        expect(res.body.error).to.equal('invalid weekday or time');
+    });
+
+    it('select pharmacies given wrong time format', async () => {
+        const res = await requester
+            .get('/api/1.0/pharmacies/openinghours?time=12-58');
+
+        expect(res.body.error).to.equal('invalid weekday or time');
+    });
 
 });

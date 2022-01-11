@@ -113,7 +113,12 @@ describe('transaction test', async () => {
         expect(data[0]).to.deep.equalInAnyOrder(statisticExpected);
     });
 
+    it('transactions within wrong daterange', async () => {
+        const res = await requester
+            .get('/api/1.0/transactions/daterange?start=2021-aa-03&end=2021-01-04')
 
+        expect(res.body.error).to.equal('invalid query parameter');
+    });
 
 
 });

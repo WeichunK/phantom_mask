@@ -139,6 +139,12 @@ API Doc
 | :---: | :---: | :--- |
 | error | String | Error message. |
 
+* **Invalid Query Parameter Error Response: 400**
+
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| error | String | Error message. |
+
 ---
 
 ### Masks API
@@ -247,7 +253,11 @@ API Doc
 | :---: | :---: | :--- |
 | error | String | Error message. |
 
+* **Invalid Query Parameter Error Response: 400**
 
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| error | String | Error message. |
 
 ---
 
@@ -307,7 +317,11 @@ API Doc
 | :---: | :---: | :--- |
 | error | String | Error message. |
 
+* **Invalid Query Parameter Error Response: 400**
 
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| error | String | Error message. |
 
 ---
 
@@ -358,7 +372,11 @@ API Doc
 | :---: | :---: | :--- |
 | error | String | Error message. |
 
+* **Invalid Query Parameter Error Response: 400**
 
+| Field | Type | Description |
+| :---: | :---: | :--- |
+| error | String | Error message. |
 
 ---
 

@@ -2,17 +2,23 @@ const transactions = require('../models/transactions_model');
 
 const getTransactions = async (req, res) => {
     const category = req.params.category;
+    const start = req.query.start;
+    const end = req.query.end;
+    if (start && !/(^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$)/.test(start)) {
+        res.status(400).send({ error: 'invalid query parameter' });
+        return;
+    }
+    if (end && !/(^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$)/.test(end)) {
+        res.status(400).send({ error: 'invalid query parameter' });
+        return;
+    }
     switch (category) {
         case 'users': {
-            start = req.query.start;
-            end = req.query.end;
             limit = req.query.limit;
             transactionList = await transactions.getTransactions({ start: start, end: end, limit: limit, category: 'users' });
             break;
         }
         case 'daterange': {
-            start = req.query.start;
-            end = req.query.end;
             transactionList = await transactions.getTransactions({ start: start, end: end, category: 'daterange' });
             break;
         }
