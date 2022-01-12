@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const { PORT, API_VERSION } = process.env;
 app.use(cors());
+app.use('/coverage', express.static('coverage'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

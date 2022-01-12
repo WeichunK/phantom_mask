@@ -8,7 +8,7 @@ const getTransactions = async (requirement = {}) => {
         query.groupby = 'GROUP BY user_name '
         query.orderby = 'ORDER BY AMOUNT DESC '
     } else if (requirement.category === 'daterange') {
-        query.sql = 'SELECT sum(piece) AS quantity, sum(transaction_amount) AS amount FROM transaction '
+        query.sql = 'SELECT (case when sum(piece) is null then 0 else sum(piece) end) AS quantity, (case when sum(transaction_amount) is null then 0 else sum(transaction_amount) end) AS amount FROM transaction '
     }
 
     if (requirement.start && requirement.end) {

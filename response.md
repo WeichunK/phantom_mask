@@ -31,7 +31,7 @@
 
 ## Bonus
 ### Test Coverage Report
- 
+ [Test Coverage Report](http://54.199.156.86/coverage/)
 
 ### Dockerized
   check my dockerfile [here](./Dockerfile)

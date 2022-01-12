@@ -2,6 +2,69 @@ require('dotenv');
 const { expect, requester } = require('./set_up');
 
 describe('transaction test', async () => {
+
+    it('transactions within daterange', async () => {
+        const res = await requester
+            .get('/api/1.0/transactions/daterange?start=2021-01-03&end=2021-01-04')
+        const data = res.body.data;
+        expect(data.length).to.equal(1);
+        const statisticExpected = {
+            quantity: "13",
+            amount: "37.30"
+        }
+        expect(data[0]).to.deep.equalInAnyOrder(statisticExpected);
+    });
+
+    it('transactions within daterange, result is zero', async () => {
+        const res = await requester
+            .get('/api/1.0/transactions/daterange?start=2021-01-04&end=2021-01-10')
+        const data = res.body.data;
+        expect(data.length).to.equal(1);
+        const statisticExpected = {
+            quantity: "0",
+            amount: "0"
+        }
+        expect(data[0]).to.deep.equalInAnyOrder(statisticExpected);
+    });
+
+    it('transactions within daterange, only given start', async () => {
+        const res = await requester
+            .get('/api/1.0/transactions/daterange?start=2021-01-03')
+        const data = res.body.data;
+        expect(data.length).to.equal(1);
+        const statisticExpected = {
+            quantity: "13",
+            amount: "37.30"
+        }
+        expect(data[0]).to.deep.equalInAnyOrder(statisticExpected);
+    });
+
+    it('transactions within daterange, only given end', async () => {
+        const res = await requester
+            .get('/api/1.0/transactions/daterange?end=2021-01-04')
+        const data = res.body.data;
+        expect(data.length).to.equal(1);
+        const statisticExpected = {
+            quantity: "23",
+            amount: "70.95"
+        }
+        expect(data[0]).to.deep.equalInAnyOrder(statisticExpected);
+    });
+
+    it('transactions within wrong start date', async () => {
+        const res = await requester
+            .get('/api/1.0/transactions/daterange?start=2021-aa-03&end=2021-01-04')
+
+        expect(res.body.error).to.equal('invalid query parameter');
+    });
+
+    it('transactions within wrong end date', async () => {
+        const res = await requester
+            .get('/api/1.0/transactions/daterange?start=2021-01-03&end=2021-s-a1')
+
+        expect(res.body.error).to.equal('invalid query parameter');
+    });
+
     it('post transaction', async () => {
         const transaction = {
             userName: "test_User_1",
@@ -100,25 +163,5 @@ describe('transaction test', async () => {
         }
         expect(data.error).to.equal(postTransactionExpected.error);
     });
-
-    it('transactions within daterange', async () => {
-        const res = await requester
-            .get('/api/1.0/transactions/daterange?start=2021-01-03&end=2021-01-04')
-        const data = res.body.data;
-        expect(data.length).to.equal(1);
-        const statisticExpected = {
-            quantity: "13",
-            amount: "37.30"
-        }
-        expect(data[0]).to.deep.equalInAnyOrder(statisticExpected);
-    });
-
-    it('transactions within wrong daterange', async () => {
-        const res = await requester
-            .get('/api/1.0/transactions/daterange?start=2021-aa-03&end=2021-01-04')
-
-        expect(res.body.error).to.equal('invalid query parameter');
-    });
-
 
 });
