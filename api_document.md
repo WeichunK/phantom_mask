@@ -102,7 +102,7 @@ API Doc
 
 * **Request Example:**
 
-  `http://[HOST_NAME]/api/[API_VERSION]/pharmacies/openinghours?day=Sun&time=14:00`
+  `http://[HOST_NAME]/api/[API_VERSION]/pharmacies/openinghours?day=sun&time=14:00`
 
 * **Success Response: 200**
 
